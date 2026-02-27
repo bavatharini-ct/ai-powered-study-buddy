@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="main-layout">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h3>Study</h3>
+        <a href="{{ url_for('new_study') }}">+ New Study</a>
+        <hr>
+
+        {% for s in saved_sessions %}
+    <div class="session-item">
+        <a href="{{ url_for('load_session', session_id=s.id) }}">
+            {{ s.title }}
+        </a>
+
+        <form method="POST" action="{{ url_for('delete_session', session_id=s.id) }}">
+            <button type="submit" class="delete-btn">🗑</button>
+        </form>
+    </div>
+{% endfor %}
+    </div>
+
+    <!-- Chat Section -->
+    <div class="chat-section">
+
+        <!-- Messages Area -->
+        <div class="chat-messages">
+            {% if not messages %}
+                <div class="welcome-box">
+                    <h2>What would you like to study today?</h2>
+                </div>
+            {% endif %}
+
+            {% for msg in messages %}
+                <div class="chat-message {{ msg.role }}">
+    <pre class="message-text">{{ msg.content }}</pre>
+</div>
+            {% endfor %}
+        </div>
+
+        <!-- Input Area -->
+        <class="chat-input">
+
+    <!-- Mode Buttons -->
+    <div class="mode-buttons">
+        <button type="submit" form="chatForm" name="mode" value="summary">Summary</button>
+        <button type="submit" form="chatForm" name="mode" value="quiz">Quiz</button>
+        <button type="submit" form="chatForm" name="mode" value="flashcards">Flashcards</button>
+    </div>
+
+    <!-- Main Chat Form -->
+   <form method="POST" id="chatForm" enctype="multipart/form-data">
+        <div class="input-row">
+
+    <!-- Hidden File Input -->
+    <input type="file" name="pdf_file" id="pdfFile" style="display:none;" accept=".pdf">
+
+    <!-- Upload Button -->
+    <button type="button" onclick="document.getElementById('pdfFile').click()" class="upload-btn">+</button>
+
+    <input type="text" name="topic" placeholder="Type your topic or question...">
+
+    <button type="submit">Send</button>
+
+</div>
+        <div id="loading" style="display:none; margin-top:8px; color:#9fb4ff;">
+            Generating response...
+        </div>
+    </form>
+
+    <!-- Regenerate -->
+    <div class="regen-container">
+        <form method="POST">
+            <input type="hidden" name="regenerate" value="true">
+            <button type="submit" class="regen-btn">🔁 Regenerate</button>
+        </form>
+    </div>
+    
+</div>
+
+<!-- Spinner Script -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const form = document.getElementById("chatForm");
+    const loading = document.getElementById("loading");
+
+    if (form) {
+        form.addEventListener("submit", function() {
+            loading.style.display = "block";
+        });
+    }
+});
+</script>
+
+{% endblock %}

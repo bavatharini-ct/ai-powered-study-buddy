@@ -1,0 +1,499 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #0e2347;
+    color: white;
+}
+
+a {
+    color: #4ea3ff;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* Main layout under navbar */
+.main-layout {
+    display: flex;
+    height: calc(100vh - 60px); /* subtract navbar height */
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background: #0f1f3d;
+    padding: 20px;
+    overflow-y: auto;
+}
+.sidebar a {
+    display: block;
+    color: #bcd2ff;
+    text-decoration: none;
+    margin-bottom: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/* Chat section */
+.chat-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: #0e2347;
+}
+
+/* Messages area */
+.chat-messages {
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto;
+}
+
+/* Input area */
+.chat-input {
+    padding: 15px 25px;
+    background: #0b1c38;
+    border-top: 1px solid #1f3c75;
+}
+
+/* Message bubbles */
+.message {
+    max-width: 60%;
+    padding: 12px 18px;
+    border-radius: 12px;
+    line-height: 1.5;
+}
+
+.message.user {
+    align-self: flex-end;
+    background: #2f5cff;
+}
+
+.message.ai {
+    align-self: flex-start;
+    background: #1a3566;
+}
+
+/* Welcome */
+.welcome-box {
+    text-align: center;
+    margin-top: 120px;
+    opacity: 0.8;
+}
+
+.mode-buttons {
+    margin-bottom: 10px;
+}
+
+.mode-buttons button {
+    margin-right: 10px;
+    padding: 6px 12px;
+    background: #2f5cff;
+    border: none;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.input-row {
+    display: flex;
+    gap: 10px;
+}
+
+.input-row input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+}
+
+.input-row button {
+    padding: 10px 20px;
+    background: #2f5cff;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+}
+
+.message.assistant {
+    align-self: flex-start;
+    background: #1a3566;
+}
+
+/* Landing Page */
+.landing-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.landing-card {
+    background: #132d5c;
+    padding: 50px 60px;
+    border-radius: 16px;
+    text-align: center;
+    width: 450px;
+}
+
+.landing-card h1 {
+    margin-bottom: 15px;
+}
+
+.landing-card p {
+    margin-bottom: 30px;
+    opacity: 0.8;
+}
+
+.landing-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn-primary {
+    background: #2f5cff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 1px solid #2f5cff;
+    color: #2f5cff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+.navbar {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    background: #0b1c38;
+    border-bottom: 1px solid #1f3c75;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 18px;
+    color: white;
+    text-decoration: none;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-link {
+    color: #4ea3ff;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+}
+
+.welcome-text {
+    color: white;
+    font-size: 14px;
+    opacity: 0.9;
+}
+/* Auth Pages (Login & Register) */
+
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+.auth-card {
+    background: #132d5c;
+    padding: 40px;
+    width: 350px;
+    border-radius: 16px;
+    text-align: center;
+}
+
+.auth-card h2 {
+    margin-bottom: 25px;
+}
+
+.auth-card input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: none;
+}
+
+.auth-card button {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background: #2f5cff;
+    color: white;
+    font-weight: bold;
+}
+
+.auth-switch {
+    margin-top: 15px;
+    font-size: 14px;
+}
+html, body {
+    height: 100%;
+    margin: 0;
+}
+/* User message */
+.chat-message.user {
+    background: linear-gradient(135deg, #3a66ff, #4f7dff);
+    color: white;
+    align-self: flex-end;
+    padding: 14px 18px;
+    border-radius: 18px 18px 4px 18px;
+    max-width: 70%;
+    margin-bottom: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* AI message */
+.chat-message.ai {
+    background: #1c2f55;
+    color: #e6edff;
+    align-self: flex-start;
+    padding: 16px 20px;
+    border-radius: 18px 18px 18px 4px;
+    max-width: 75%;
+    margin-bottom: 14px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+}
+
+/* Make pre text clean */
+.chat-message pre {
+    margin: 0;
+    font-family: inherit;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+.chat-input {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 14px 18px;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    background: #1a2c52;
+    color: white;
+}
+
+.chat-input input::placeholder {
+    color: #9fb4ff;
+}
+
+.chat-input button {
+    padding: 12px 20px;
+    border-radius: 20px;
+    border: none;
+    background: linear-gradient(135deg, #3a66ff, #5b84ff);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.chat-input button:hover {
+    transform: scale(1.05);
+}
+.chat-message {
+    animation: fadeIn 0.25s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.regen-btn {
+    margin-top: 8px;
+    background: transparent;
+    border: 1px solid #3a66ff;
+    color: #9fb4ff;
+    padding: 6px 14px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: 0.2s;
+}
+
+.regen-btn:hover {
+    background: #3a66ff;
+    color: white;
+}
+.message-text {
+    margin: 0;
+    font-family: inherit;
+    white-space: pre-wrap;
+    line-height: 1.6;
+    font-size: 15px;
+}
+
+/* Better spacing inside AI bubble */
+.chat-message.ai {
+    padding: 18px 22px;
+}
+
+/* Add spacing between paragraphs */
+.chat-message.ai p {
+    margin-bottom: 10px;
+}
+.chat-input {
+    padding: 20px 30px;
+    border-top: 1px solid #1f3c75;
+    background: #0b1c38;
+}
+
+/* Mode buttons */
+.mode-buttons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.mode-buttons button {
+    background: #1c2f55;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 20px;
+    color: #bcd2ff;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.mode-buttons button:hover {
+    background: #3a66ff;
+    color: white;
+}
+
+/* Input row */
+.input-row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.input-row input {
+    flex: 1;
+    padding: 12px 18px;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    background: #1a2c52;
+    color: white;
+}
+
+.input-row button {
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    background: linear-gradient(135deg, #3a66ff, #5b84ff);
+    color: white;
+    cursor: pointer;
+}
+
+/* Regenerate */
+.regen-container {
+    margin-top: 15px;
+}
+
+.regen-btn {
+    background: transparent;
+    border: 1px solid #3a66ff;
+    color: #9fb4ff;
+    padding: 6px 14px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.regen-btn:hover {
+    background: #3a66ff;
+    color: white;
+}
+.session-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.delete-btn {
+    background: transparent;
+    border: none;
+    color: #6f8edb;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.delete-btn:hover {
+    color: #ff5c5c;
+}
+.pdf-btn {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 8px 14px;
+    background: #1c2f55;
+    color: #bcd2ff;
+    border-radius: 15px;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.pdf-btn:hover {
+    background: #3a66ff;
+    color: white;
+}
+
+.upload-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #1c2f55;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s ease;
+}
+
+.upload-btn:hover {
+    background: #3a66ff;
+    transform: scale(1.05);
+}
+
+
+

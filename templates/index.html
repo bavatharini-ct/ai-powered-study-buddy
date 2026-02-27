@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="landing-container">
+    <div class="landing-card">
+        <h1>Welcome to AI Study Buddy</h1>
+        <p>Your smart AI-powered learning assistant.</p>
+
+        <div class="landing-buttons">
+            <a href="{{ url_for('login') }}" class="btn-primary">Login</a>
+            <a href="{{ url_for('register') }}" class="btn-secondary">Register</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
