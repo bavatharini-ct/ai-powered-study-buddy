@@ -3,5 +3,6 @@ gunicorn
 groq
 python-dotenv
 Flask-SQLAlchemy
+Flask-Login
 PyPDF2
 reportlab
