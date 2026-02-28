@@ -71,7 +71,6 @@ GROQ_API_KEY = os.environ.get("GROQ_API_KEY")
 app.config['SECRET_KEY'] = 'your_secret_key_here'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 
-db = SQLAlchemy(app)
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -79,13 +78,24 @@ login_manager.login_view = 'login'
 
 # ---------------- User Model ----------------
 
-# ---- Models ----
+db = SQLAlchemy(app)
+
+# --------- Models ---------
+
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(150), unique=True, nullable=False)
     password = db.Column(db.String(150), nullable=False)
 
-# ---- Create Tables ----
+class StudySession(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    topic = db.Column(db.String(255))
+    content = db.Column(db.Text)
+    created_at = db.Column(db.DateTime)
+
+# --------- Create Tables ---------
+
 with app.app_context():
     db.create_all()
 
