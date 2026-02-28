@@ -68,6 +68,10 @@ app.config['MAX_CONTENT_LENGTH'] = 5 * 1024 * 1024  # 5MB limit
 import os
 
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY")
+
+client = Groq(
+    api_key=GROQ_API_KEY
+)
 app.config['SECRET_KEY'] = 'your_secret_key_here'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 
