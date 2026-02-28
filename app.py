@@ -103,13 +103,6 @@ with app.app_context():
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-class StudySession(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    title = db.Column(db.String(200))
-    content = db.Column(db.Text)  # will store full chat
-    created_at = db.Column(db.DateTime, default=db.func.current_timestamp())
-
 # ---------------- Routes ----------------
 
 # Landing Page
